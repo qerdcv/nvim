@@ -41,6 +41,7 @@ require("mason-lspconfig").setup({
 					gopls = {
 						analyses = {
 							unusedparams = true,
+							shadow = true,
 						},
 						staticcheck = true,
 						gofumpt = true,
