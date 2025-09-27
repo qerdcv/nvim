@@ -8,11 +8,13 @@ return {
 				diagnostics = 'nvim_lsp',
 				show_buffer_close_icons = true,
 				show_close_icon = true,
-				always_show_bufferline = true
+				always_show_bufferline = true,
+				diagnostics = "nvim_lsp"
 			}
 		})
 
 		vim.keymap.set("n", "<A-l>", ":BufferLineCycleNext<CR>", { silent = true })
 		vim.keymap.set("n", "<A-h>", ":BufferLineCyclePrev<CR>", { silent = true })
+		
 	end,
 }
