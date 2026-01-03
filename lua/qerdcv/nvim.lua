@@ -10,22 +10,24 @@ vim.opt.expandtab = false
 vim.cmd.colorscheme = 'catppuccin'
 
 vim.diagnostic.config({
-  signs = {
-    text = {
-      [vim.diagnostic.severity.ERROR] = '✘',
-      [vim.diagnostic.severity.WARN] = '▲',
-      [vim.diagnostic.severity.HINT] = '⚑',
-      [vim.diagnostic.severity.INFO] = '»',
-    },
-  },
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = '✘',
+			[vim.diagnostic.severity.WARN] = '▲',
+			[vim.diagnostic.severity.HINT] = '⚑',
+			[vim.diagnostic.severity.INFO] = '»',
+		},
+	},
 })
+
+-- format on hontkey and display inlay hints, but only if LSP is attached
 
 -- go auto formatting
 vim.api.nvim_create_autocmd('BufWritePre', {
 	pattern = '*.go',
 	callback = function()
 		local params = vim.lsp.util.make_range_params()
-		params.context = {only = {'source.organizeImports'}}
+		params.context = { only = { 'source.organizeImports' } }
 		-- buf_request_sync defaults to a 1000ms timeout. Depending on your
 		-- machine and codebase, you may want longer. Add an additional
 		-- argument after params if you find that you have to write the file
@@ -40,6 +42,6 @@ vim.api.nvim_create_autocmd('BufWritePre', {
 				end
 			end
 		end
-		vim.lsp.buf.format({async = false})
+		vim.lsp.buf.format({ async = false })
 	end
 })
