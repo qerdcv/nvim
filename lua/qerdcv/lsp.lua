@@ -19,9 +19,7 @@ vim.lsp.config('rust_analyzer', {
 	root_markers = { 'Cargo.toml', 'rust-project.json', '.git' },
 	settings = {
 		['rust-analyze'] = {
-			inlayHints = {
-				chainingHints = { enable = true },
-			},
+			check = { command = 'check' },
 		}
 	},
 })
