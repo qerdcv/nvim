@@ -38,10 +38,27 @@ vim.lsp.config('gopls', {
 	},
 })
 
+vim.lsp.config('clangd', {
+	cmd = {
+		'clangd',
+		'--background-index',
+		'--clang-tidy',
+		'--completion-style=detailed',
+		'--header-insertion=iwyu',
+		'--header-insertion-decorators',
+		'--function-arg-placeholders',
+		'--fallback-style=LLVM'
+	},
+	filetypes = { 'c', 'cpp', 'objc', 'objcpp' },
+	root_markers = { 'CMakeLists.txt' },
+	settings = {}
+})
+
 vim.lsp.enable({
 	'lua_ls',
 	'gopls',
-	'rust_analyzer'
+	'rust_analyzer',
+	'clangd',
 })
 
 vim.api.nvim_create_autocmd('LspAttach', {
